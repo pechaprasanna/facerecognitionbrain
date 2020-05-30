@@ -53,7 +53,9 @@ class App extends Component {
   }
 
   calculateFaceLocation = (data) => {
+      console.log('data', data)
       const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+      console.log('clarifaiFace',clarifaiFace)
       const image = document.getElementById('inputImage');
       const width = Number(image.width);
       const height =Number(image.height);
@@ -75,13 +77,14 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch('https://arcane-reaches-19460.herokuapp.com/imageurl', {
+    fetch('https://arcane-reaches-19460.herokuapp.com/imageapi', {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
-            id: this.state.input
+            input: this.state.input
           })
         })
+    .then(response => response.json())
     .then(response => {
     	if(response){
     		fetch('https://arcane-reaches-19460.herokuapp.com/image', {
