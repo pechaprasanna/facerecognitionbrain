@@ -25,7 +25,7 @@ class Register extends React.Component {
 
 	onSubmitSignIn = (event) => {
 		event.preventDefault();
-		fetch('https://arcane-reaches-19460.herokuapp.com/register',{
+		fetch('http://profacedetect-api-myproject.127.0.0.1.nip.io/register',{
 			method: 'post',
 			headers: {'Content-Type':'application/json'},
 			body: JSON.stringify({

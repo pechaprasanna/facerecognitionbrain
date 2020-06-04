@@ -77,7 +77,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch('https://arcane-reaches-19460.herokuapp.com/imageurl', {
+    fetch('http://profacedetect-api-myproject.127.0.0.1.nip.io/imageurl', {
           method: 'post',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({
@@ -87,7 +87,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
     	if(response){
-    		fetch('https://arcane-reaches-19460.herokuapp.com/image', {
+    		fetch('http://profacedetect-api-myproject.127.0.0.1.nip.io/image', {
     			method: 'put',
     			headers: {'Content-Type':'application/json'},
     			body: JSON.stringify({
